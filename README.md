@@ -27,7 +27,7 @@ Este bloque importa librerías clave para analizar señales biológicas: ` wfdb`
 
 <img width="699" height="440" alt="image" src="https://github.com/user-attachments/assets/3acd7d9a-fb69-427e-ba16-9345ba6500d0" />
 
-## Señal y[n] resultante de la convolución
+## Señal y[n] resultante de la convolución en python
 
 ```python
 
