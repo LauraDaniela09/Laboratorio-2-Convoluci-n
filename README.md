@@ -225,8 +225,10 @@ print("Máximo:", maximo)
 print("Mínimo:", minimo)
 ```
  Estos parámetros son esenciales para comprender la distribución y estabilidad de la señal antes de realizar análisis más profundos.
+
  
  **resultados**
+ 
 - Media: -0.03602852356785734
 - Mediana: -0.03468168468680233
 - Desviación estándar: 0.1436685720789419
@@ -307,11 +309,11 @@ plt.show()
 
 A partir de la PSD se obtienen tres estadísticas clave:
 
-*la `frecuencia media` es el promedio ponderado por la potencia.
+*la `frecuencia media` es el promedio ponderado por la potencia.*
 
-*la `frecuencia mediana` divide la energía total en dos partes iguales.
+*la `frecuencia mediana` divide la energía total en dos partes iguales.*
 
-*la `desviación estándar`mide la dispersión de la energía en frecuencias.
+*la `desviación estándar`mide la dispersión de la energía en frecuencias.*
 
 posteriormente, se grafica un histograma que muestra la distribución de potencia a lo largo del espectro de frecuencias, facilitando la visualización de dónde se concentra la energía de la señal.
 ```python
