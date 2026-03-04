@@ -49,23 +49,55 @@ y[n] = [  5   6  35  52  50  58 103  93 162 130 179 158 102 272 202 292 189 268
  242 211 331 250 223 192 172 166 153 150 112  63  75  10  24]
 
  ```python
+# Tus datos
+h = np.array([5,6,0,0,8,2,8,5,6,0,0,8,1,6])
+x = np.array([1,0,7,2,6,4,3,8,0,7,1,0,1,9,9,8,8,7,1,4])
 
-import matplotlib.pyplot as plt
+y = np.array([5, 6, 35, 52, 50, 58, 103, 93, 162, 130, 179, 158,
+              102, 272, 202, 292, 189, 268, 242, 211, 331, 250,
+              223, 192, 172, 166, 153, 150, 112, 63, 75, 10, 24])
 
-n = np.arange(len(y))
+# Ejes
+nx = np.arange(len(x))
+nh = np.arange(len(h))
+ny = np.arange(len(y))
 
-plt.figure()
-plt.stem(n, y)
+# ================================
+# Figura horizontal
+# ================================
+plt.figure(figsize=(18,5))
+
+# -------- x[n] --------
+plt.subplot(1,3,1)
+plt.stem(nx, x, linefmt='purple', markerfmt='o', basefmt=" ")
+plt.title('Señal x[n]')
+plt.xlabel('n')
+plt.ylabel('x[n]')
+plt.grid()
+
+# -------- h[n] --------
+plt.subplot(1,3,2)
+plt.stem(nh, h, linefmt='purple', markerfmt='o', basefmt=" ")
+plt.title('Señal h[n]')
+plt.xlabel('n')
+plt.ylabel('h[n]')
+plt.grid()
+
+# -------- y[n] --------
+plt.subplot(1,3,3)
+plt.stem(ny, y, linefmt='purple', markerfmt='o', basefmt=" ")
+plt.title('Convolución y[n]')
 plt.xlabel('n')
 plt.ylabel('y[n]')
-plt.stem(n, y, linefmt='purple', markerfmt='o', basefmt=" ")
-plt.title('Señal de la Convolución y[n] = x[n] * h[n]')
 plt.grid()
+
+plt.tight_layout()
 plt.show()
 
 ```
 
-<img width="571" height="455" alt="image" src="https://github.com/user-attachments/assets/bef099b4-29d9-4616-9d06-74f17d9d1d80" />
+<img width="1790" height="490" alt="image" src="https://github.com/user-attachments/assets/39764ec7-6014-40c5-b80c-90d7871ac808" />
+
 
 Este código en Python calcula la convolución discreta entre dos señales utilizando la función `np.convolve()` de` NumPy`. Primero, se definen dos listas, `h` y `x`, que representan la respuesta al impulso de un sistema y una señal de entrada, respectivamente. Luego, se aplica la convolución entre estas dos señales usando `np.convolve(x, h, mode='full')`, lo que genera una nueva señal y cuya longitud es la suma de las longitudes de `x` y `h` menos uno. 
 
