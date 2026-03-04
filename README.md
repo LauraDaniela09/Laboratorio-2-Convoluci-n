@@ -195,7 +195,9 @@ print("Frecuencia dominante:", f_dominante)
 print("Frecuencia de Nyquist:", f_nyquist)
 ```
 se calcularon la frecuencia de muestreo de 4 veces la frecuencia de Nyquist
+
  **resultados**
+ 
 - Frecuencia dominante: 2.0
 - Frecuencia de Nyquist: 4.0
 - Nueva frecuencia de muestreo: 16.0 Hz
