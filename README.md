@@ -196,9 +196,9 @@ print("Frecuencia de Nyquist:", f_nyquist)
 ```
 se calcularon la frecuencia de muestreo de 4 veces la frecuencia de Nyquist
  **resultados**
-Frecuencia dominante: 2.0
-Frecuencia de Nyquist: 4.0
-Nueva frecuencia de muestreo: 16.0 Hz
+- Frecuencia dominante: 2.0
+- Frecuencia de Nyquist: 4.0
+- Nueva frecuencia de muestreo: 16.0 Hz
 
 <img width="1012" height="547" alt="image" src="https://github.com/user-attachments/assets/4195b9b9-b5d9-407b-b022-efd5160b537e" />
 
@@ -227,11 +227,11 @@ print("Mínimo:", minimo)
  Estos parámetros son esenciales para comprender la distribución y estabilidad de la señal antes de realizar análisis más profundos.
  
  **resultados**
-Media: -0.03602852356785734
-Mediana: -0.03468168468680233
-Desviación estándar: 0.1436685720789419
-Máximo: 0.40822401049081236
-Mínimo: -0.5458257573191077
+- Media: -0.03602852356785734
+- Mediana: -0.03468168468680233
+- Desviación estándar: 0.1436685720789419
+- Máximo: 0.40822401049081236
+- Mínimo: -0.5458257573191077
 
 Se calcula la Transformada de Fourier para analizar la señal en frecuencia, mostrando solo las frecuencias positivas hasta 100 Hz para mayor claridad. Además, se estima la densidad espectral de potencia con el método de Welch y se grafican ambos resultados para visualizar la distribución de energía en la señal.
 
@@ -348,8 +348,8 @@ print("Frecuencia mediana:", frecuencia_mediana, "Hz")
 print("Desviación estándar:", desviacion_frecuencia, "Hz")
 ```
 **resultados**
-Frecuencia media: 9.497832446885091 Hz
-Frecuencia mediana: 4.0 Hz
-Desviación estándar: 32.11530631233756 Hz
+- Frecuencia media: 9.497832446885091 Hz
+- Frecuencia mediana: 4.0 Hz
+- Desviación estándar: 32.11530631233756 Hz
 
 <img width="1389" height="490" alt="image" src="https://github.com/user-attachments/assets/2dfce110-b8dc-4ec5-b6f6-3f2e3e360b71" />
