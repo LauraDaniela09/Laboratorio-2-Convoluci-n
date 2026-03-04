@@ -227,7 +227,7 @@ print("Mínimo:", minimo)
  Estos parámetros son esenciales para comprender la distribución y estabilidad de la señal antes de realizar análisis más profundos.
  
  **resultados**
- Media: -0.03602852356785734
+Media: -0.03602852356785734
 Mediana: -0.03468168468680233
 Desviación estándar: 0.1436685720789419
 Máximo: 0.40822401049081236
@@ -305,4 +305,51 @@ plt.show()
 
 <img width="1012" height="547" alt="image" src="https://github.com/user-attachments/assets/dd03bb5c-7092-41aa-b9d4-45a038de67f4" />
 
+A partir de la PSD se obtienen tres estadísticas clave:
 
+*la `frecuencia media` es el promedio ponderado por la potencia.
+
+*la `frecuencia mediana` divide la energía total en dos partes iguales.
+
+*la `desviación estándar`mide la dispersión de la energía en frecuencias.
+
+posteriormente, se grafica un histograma que muestra la distribución de potencia a lo largo del espectro de frecuencias, facilitando la visualización de dónde se concentra la energía de la señal.
+```python
+N = len(senal)
+
+# FFT
+X = np.fft.fft(senal)
+frecuencias = np.fft.fftfreq(N, 1/fs)
+
+# Solo parte positiva
+pos_mask = frecuencias >= 0
+frecuencias_pos = frecuencias[pos_mask]
+PSD = (1/N) * np.abs(X[pos_mask])**2
+
+# Normalizamos la PSD para usarla como peso
+PSD_norm = PSD / np.sum(PSD)
+
+# -----------------------------
+# i. Frecuencia media
+frecuencia_media = np.sum(frecuencias_pos * PSD_norm)
+
+# ii. Frecuencia mediana
+cumulative = np.cumsum(PSD_norm)
+frecuencia_mediana = frecuencias_pos[np.where(cumulative >= 0.5)[0][0]]
+
+# iii. Desviación estándar
+desviacion_frecuencia = np.sqrt(
+    np.sum(((frecuencias_pos - frecuencia_media)**2) * PSD_norm)
+)
+
+# Mostrar resultados
+print("Frecuencia media:", frecuencia_media, "Hz")
+print("Frecuencia mediana:", frecuencia_mediana, "Hz")
+print("Desviación estándar:", desviacion_frecuencia, "Hz")
+```
+**resultados**
+Frecuencia media: 9.497832446885091 Hz
+Frecuencia mediana: 4.0 Hz
+Desviación estándar: 32.11530631233756 Hz
+
+<img width="1389" height="490" alt="image" src="https://github.com/user-attachments/assets/2dfce110-b8dc-4ec5-b6f6-3f2e3e360b71" />
