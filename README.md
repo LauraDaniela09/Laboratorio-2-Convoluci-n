@@ -357,3 +357,24 @@ print("Desviación estándar:", desviacion_frecuencia, "Hz")
 - Desviación estándar: 32.11530631233756 Hz
 
 <img width="1389" height="490" alt="image" src="https://github.com/user-attachments/assets/2dfce110-b8dc-4ec5-b6f6-3f2e3e360b71" />
+
+Adicionalmente se realizo la clasifiacion de la señal :
+
+**Determinística o Aleatoria:** La señal EOG es generalmente aleatoria, ya que presenta variaciones impredecibles debido a la actividad natural del ojo y el ruido biológico, aunque puede tener componentes periódicos asociados a movimientos repetitivos.
+
+**Periódica o Apperiodica:** La señal EOG es apperiodica o no estrictamente periódica, dado que sus características no se repiten de forma exacta en el tiempo, reflejando la dinámica irregular de los movimientos oculares.
+
+**Analógica o Digital:** Originalmente, la señal EOG es analógica, ya que es una señal continua en el tiempo y en amplitud. Sin embargo, al ser adquirida y almacenada en un computador mediante un proceso de muestreo, se convierte en una señal digital para su procesamiento.
+
+<h1 align="center"><i><b>Bibliografia</b></i></h1>
+
+[1]https://docs.github.com/es/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
+
+[2]https://www.w3schools.com/python/default.asp
+
+[3]https://www.spyder-ide.org/
+
+[4]https://www.ni.com/es/support/downloads/drivers/download.ni-daq-mx.html?srsltid=AfmBOop-UElW8OLmEl4SfkDFLwaI0hCgohxlfwcTWo326OHB-MLJ-aNv#569353
+
+[5]https://www.anaconda.com/download
+
