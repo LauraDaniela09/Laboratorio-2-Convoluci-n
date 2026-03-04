@@ -167,9 +167,37 @@ plt.figure(figsize=(12,6))
 plt.plot(t, senal, color='purple')
 plt.xlabel("Tiempo (s)")
 plt.ylabel("Amplitud")
-plt.title("Señal del generador - Dominio del tiempo")
+plt.title("Señal del generador EOG")
 plt.grid()
 plt.show()
 ```
 
-<img width="1012" height="547" alt="image" src="https://github.com/user-attachments/assets/ce496940-db39-4522-b1cc-045de3e29ffe" />
+<img width="1012" height="547" alt="image" src="https://github.com/user-attachments/assets/e82aaf11-fa4a-4c23-885b-37453f63f742" />
+
+Este código carga una señal EOG desde un archivo `CSV `usando `pandas`, extrae las columnas de `tiempo` y `voltaje`, y luego grafica la señal en función del tiempo con `matplotlib`, mostrando la variación del voltaje en milivoltios y agregando etiquetas y una cuadrícula para facilitar la visualización.
+*grafica*
+
+
+```python
+fs = 1000
+N = len(senal)
+
+Y = np.fft.fft(senal)
+frecuencias = np.fft.fftfreq(N, d=1/fs)
+
+freq_pos = frecuencias[:N//2]
+magnitud = np.abs(Y[:N//2])
+
+f_dominante = freq_pos[np.argmax(magnitud)]
+f_nyquist = 2 * f_dominante
+
+print("Frecuencia dominante:", f_dominante)
+print("Frecuencia de Nyquist:", f_nyquist)
+```
+se calcularon la frecuencia de muestreo de 4 veces la frecuencia de Nyquist
+ **resultados**
+Frecuencia dominante: 2.0
+Frecuencia de Nyquist: 4.0
+Nueva frecuencia de muestreo: 16.0 Hz
+
+<img width="1012" height="547" alt="image" src="https://github.com/user-attachments/assets/4195b9b9-b5d9-407b-b022-efd5160b537e" />
