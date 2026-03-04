@@ -201,3 +201,108 @@ Frecuencia de Nyquist: 4.0
 Nueva frecuencia de muestreo: 16.0 Hz
 
 <img width="1012" height="547" alt="image" src="https://github.com/user-attachments/assets/4195b9b9-b5d9-407b-b022-efd5160b537e" />
+
+Se calcularon los estadísticos descriptivos fundamentales de la señal EOG para caracterizar su comportamiento en el dominio temporal. 
+*La` media `indica el valor promedio general.
+
+*la `mediana` representa el punto central de los datos.
+
+*la `desviación` estándar muestra la variabilidad o dispersión de la señal.
+
+ *El `máximo` y `mínimo` reflejan los valores extremos o picos. 
+
+ ```python
+media = np.mean(senal)
+mediana = np.median(senal)
+desv = np.std(senal)
+maximo = np.max(senal)
+minimo = np.min(senal)
+
+print("Media:", media)
+print("Mediana:", mediana)
+print("Desviación estándar:", desv)
+print("Máximo:", maximo)
+print("Mínimo:", minimo)
+```
+ Estos parámetros son esenciales para comprender la distribución y estabilidad de la señal antes de realizar análisis más profundos.
+ 
+ **resultados**
+ Media: -0.03602852356785734
+Mediana: -0.03468168468680233
+Desviación estándar: 0.1436685720789419
+Máximo: 0.40822401049081236
+Mínimo: -0.5458257573191077
+
+Se calcula la Transformada de Fourier para analizar la señal en frecuencia, mostrando solo las frecuencias positivas hasta 100 Hz para mayor claridad. Además, se estima la densidad espectral de potencia con el método de Welch y se grafican ambos resultados para visualizar la distribución de energía en la señal.
+
+ ```python
+fs = 1000
+N = len(senal)
+
+Y = np.fft.fft(senal)
+frecuencias = np.fft.fftfreq(N, d=1/fs)
+
+freq_pos = frecuencias[:N//2]
+magnitud = np.abs(Y[:N//2])
+
+plt.figure(figsize=(12,6))
+plt.plot(freq_pos, magnitud, color='purple')
+plt.xlabel("Frecuencia (Hz)")
+plt.ylabel("Magnitud")
+plt.title("Transformada de Fourier de la Señal")
+plt.grid()
+plt.show()
+```
+
+<img width="1005" height="547" alt="image" src="https://github.com/user-attachments/assets/c73bdfb3-b7a2-4968-b97a-4211cf963bb8" />
+
+ ahora su densidad espectral de potencia
+ 
+
+ ```python
+PSD = (np.abs(Y)**2) / N
+PSD_pos = PSD[:N//2]
+
+plt.figure(figsize=(12,6))
+plt.plot(freq_pos, PSD_pos, color='purple', linewidth=2)
+plt.xlabel("Frecuencia (Hz)")
+plt.ylabel("Potencia")
+plt.title("Densidad Espectral de Potencia (PSD)")
+plt.grid()
+plt.show()
+```
+<img width="996" height="547" alt="image" src="https://github.com/user-attachments/assets/549277b8-5676-4dfa-bee0-d6474d0738b0" />
+
+como observamos que las graficas en tiempo de frecuencia era muy grande, lo que hicimos fue escoger una ventana de tiempo de 0 a 20 hz, ya que esa es la frecuencia de una señal EOG
+
+ ```python
+plt.figure(figsize=(12,6))
+
+plt.plot(freq_pos, magnitud, color='purple', linewidth=2)
+
+plt.xlim(0, 20)
+plt.xlabel("Frecuencia (Hz)")
+plt.ylabel("Magnitud")
+plt.title("Transformada de Fourier (0–20 Hz)")
+plt.grid()
+plt.show()
+```
+
+<img width="1020" height="547" alt="image" src="https://github.com/user-attachments/assets/ca07c284-ecef-40a9-9239-1dd937635263" />
+
+```python
+plt.figure(figsize=(12,6))
+
+plt.plot(freq_pos, PSD_pos, color='purple', linewidth=2)
+
+plt.xlim(0, 20)
+plt.xlabel("Frecuencia (Hz)")
+plt.ylabel("Potencia")
+plt.title("Densidad Espectral de Potencia (0–20 Hz)")
+plt.grid()
+plt.show()
+```
+
+<img width="1012" height="547" alt="image" src="https://github.com/user-attachments/assets/dd03bb5c-7092-41aa-b9d4-45a038de67f4" />
+
+
