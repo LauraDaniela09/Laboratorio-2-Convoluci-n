@@ -105,6 +105,57 @@ La convolución es una operación fundamental en procesamiento de señales, ya q
 
 <h1 align="center"><i><b>PARTE B DEL LABORATORIO</b></i></h1>
 
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parámetros
+Ts = 1.25e-3
+f = 100
+n = np.arange(0,9)
+
+# Señales
+x1 = np.cos(2*np.pi*f*n*Ts)
+x2 = np.sin(2*np.pi*f*n*Ts)
+
+# Correlación cruzada
+r12 = np.correlate(x1, x2, mode='full')
+lags = np.arange(-len(x1)+1, len(x1))
+
+plt.figure(figsize=(15,4))
+
+# x1
+plt.subplot(1,3,1)
+plt.stem(n, x1, linefmt='purple', markerfmt='o', basefmt='r-')
+plt.title("x1[n] = cos(2π100nTs)")
+plt.xlabel("n")
+plt.ylabel("Amplitud")
+plt.grid()
+
+# x2
+plt.subplot(1,3,2)
+plt.stem(n, x2, linefmt='purple', markerfmt='o', basefmt='r-')
+plt.title("x2[n] = sin(2π100nTs)")
+plt.xlabel("n")
+plt.ylabel("Amplitud")
+plt.grid()
+
+# correlación
+plt.subplot(1,3,3)
+plt.stem(lags, r12, linefmt='purple', markerfmt='o', basefmt='r-')
+plt.title("Correlación cruzada entre x1[n] y x2[n]")
+plt.xlabel("Retardo k")
+plt.ylabel("r12[k]")
+plt.grid()
+
+plt.tight_layout()
+plt.show()
+```
+
+<img width="1490" height="390" alt="image" src="https://github.com/user-attachments/assets/f21266fd-7d19-47fe-9105-73eb39bdc5a2" />
+
+
+
 <h1 align="center"><i><b>PARTE C DEL LABORATORIO</b></i></h1>
 inicalmente para la adquisición de la señal EOG se utilizó el código proporcionado que emplea la librería `nidaqmx` , la cual permite interactuar con dispositivos NI DAQ para la captura de señales analógicas. En el código se configura el canal de entrada analógica, la frecuencia de muestreo (800 Hz, cumpliendo el criterio de Nyquist), y el tiempo total de adquisición (5 segundos). Luego, se realiza la lectura finita de muestras y se guarda la señal en un vector. Finalmente, se genera un gráfico que muestra la señal adquirida en función del tiempo, permitiendo visualizar claramente la señal EOG en formato digital lista para su posterior análisis.
 
