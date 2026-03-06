@@ -23,6 +23,10 @@ Este bloque importa librerías clave para analizar señales biológicas: ` wfdb`
 
 <h1 align="center"><i><b>PARTE A DEL LABORATORIO</b></i></h1>
 
+## Diagrama de flujo 
+<img width="810" height="1600" alt="image" src="https://github.com/user-attachments/assets/dba62639-27c5-4dbe-83ab-54c9236c8101" />
+
+
 <img width="678" height="442" alt="image" src="https://github.com/user-attachments/assets/43539f60-24df-4e2b-87d7-fad9f343d62a" />
 
 <img width="699" height="440" alt="image" src="https://github.com/user-attachments/assets/3acd7d9a-fb69-427e-ba16-9345ba6500d0" />
@@ -105,6 +109,9 @@ La convolución es una operación fundamental en procesamiento de señales, ya q
 
 <h1 align="center"><i><b>PARTE B DEL LABORATORIO</b></i></h1>
 
+## Diagrama de flujo
+<img width="783" height="1583" alt="image" src="https://github.com/user-attachments/assets/8ca66439-5b5d-450e-814c-7c11a0b0c76a" />
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -154,9 +161,41 @@ plt.show()
 
 <img width="1490" height="390" alt="image" src="https://github.com/user-attachments/assets/f21266fd-7d19-47fe-9105-73eb39bdc5a2" />
 
+La representación gráfica muestra la correlación cruzada entre las señales `𝑥_1[𝑛]` y `𝑥_2[𝑛]` en función del retardo `k`.La secuencia resultante presenta valores positivos y negativos distribuidos alrededor de cero. Esto ocurre porque las señales utilizadas son un coseno y un seno de la misma frecuencia, los cuales están desfasados 90° entre sí.
 
+Debido a este desfase, cuando el retardo es `k = 0`, la correlación es cercana a cero, indicando que las señales no están alineadas en fase. Sin embargo, al desplazar una señal respecto a la otra, aparecen valores máximos y mínimos en la correlación, lo que indica distintos niveles de similitud dependiendo del desplazamiento aplicado.
+
+La gráfica de la correlación muestra una forma aproximadamente antisymétrica, característica de señales sinusoidales desfasadas. Esto significa que para ciertos retardos las señales se parecen más (correlación positiva) y para otros se comportan de forma opuesta (correlación negativa). En conclusión, la secuencia de correlación permite identificar el desfase existente entre ambas señales y muestra cómo cambia su similitud al desplazarlas en el tiempo.
+
+## Representación gráfica y descripción de la secuencia resultante
+En las gráficas se observa que ambas señales son sinusoidales con la misma frecuencia, pero presentan un desfase de 90°, ya que una es un coseno y la otra un seno.
+
+Al calcular la correlación cruzada entre las dos señales se obtiene una nueva secuencia `𝑟_12[𝑘]`, la cual depende del retardo `𝑘` entre ellas. La gráfica de esta correlación muestra valores positivos y negativos distribuidos alrededor de cero. Cuando el retardo es cercano a cero, la correlación es pequeña, lo que indica que las señales no están alineadas en fase. Sin embargo, al desplazar una señal respecto a la otra aparecen máximos y mínimos, lo que refleja diferentes niveles de similitud entre las señales dependiendo del desplazamiento aplicado.
+
+En general, la secuencia resultante permite observar cómo cambia la similitud entre las señales cuando una se desplaza respecto a la otra, lo que evidencia el desfase existente entre el seno y el coseno.
+
+## ¿En qué situaciones resulta útil aplicar la correlación cruzada en el procesamiento digital de señales?
+La correlación cruzada es una herramienta muy utilizada en el procesamiento digital de señales porque permite medir el grado de similitud entre dos señales en función de su desplazamiento temporal.
+Algunas aplicaciones importantes son:
+
+## 1. Detección de retardos entre señales
+Se utiliza para determinar cuánto se encuentra retrasada una señal respecto a otra. Esto es muy útil en sistemas de comunicación y sincronización de señales.
+
+## 2. Detección de patrones o señales conocidas
+Permite identificar la presencia de una señal específica dentro de otra señal que puede contener ruido, como ocurre en sistemas de radar, sonar o procesamiento de audio.
+
+## 3. Procesamiento de señales biomédicas
+Se aplica en el análisis de señales como ECG o EEG para comparar patrones y detectar similitudes entre diferentes registros.
+
+## 4. Telecomunicaciones y sincronización
+Se usa para alinear señales transmitidas y recibidas, permitiendo recuperar correctamente la información enviada.
 
 <h1 align="center"><i><b>PARTE C DEL LABORATORIO</b></i></h1>
+
+## Diagrama de flujo
+<img width="988" height="1368" alt="image" src="https://github.com/user-attachments/assets/8f7be204-e3b7-4edb-9ca2-37fe4c73c054" />
+
+
 inicalmente para la adquisición de la señal EOG se utilizó el código proporcionado que emplea la librería `nidaqmx` , la cual permite interactuar con dispositivos NI DAQ para la captura de señales analógicas. En el código se configura el canal de entrada analógica, la frecuencia de muestreo (800 Hz, cumpliendo el criterio de Nyquist), y el tiempo total de adquisición (5 segundos). Luego, se realiza la lectura finita de muestras y se guarda la señal en un vector. Finalmente, se genera un gráfico que muestra la señal adquirida en función del tiempo, permitiendo visualizar claramente la señal EOG en formato digital lista para su posterior análisis.
 
 ```python
